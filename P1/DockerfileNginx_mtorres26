@@ -1,0 +1,17 @@
+# Usa una imagen base de Debian con una versión ligera
+FROM debian:buster-slim
+
+# Actualiza el repositorio e instala Nginx, PHP y herramientas de red
+RUN apt-get update && \
+    apt-get install -y nginx php-fpm php-mysql net-tools iputils-ping && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copia tu archivo de configuración personalizado a la ubicación adecuada en el contenedor
+COPY mi_config.conf /etc/nginx/sites-available/default
+
+# Expone el puerto 80 para Nginx
+EXPOSE 80
+
+# Inicia Nginx y PHP-FPM en el inicio del contenedor
+CMD service php7.3-fpm start && nginx -g "daemon off;"

@@ -1,0 +1,21 @@
+# Usa una imagen base de Debian con una versión ligera
+FROM debian:buster-slim
+
+# Actualiza el repositorio e instala Apache, PHP y herramientas de red
+RUN apt-get update && \
+    apt-get install -y apache2 php libapache2-mod-php net-tools iputils-ping && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copia archivos de configuración personalizados para Apache y PHP
+COPY apache2.conf /etc/apache2/apache2.conf
+COPY php.ini /etc/php/7.3/apache2/php.ini
+
+# Habilita módulos de Apache si es necesario (por ejemplo, autoindex)
+RUN a2enmod autoindex
+
+# Expone el puerto 80 para Apache
+EXPOSE 80
+
+# Inicia Apache en el inicio del contenedor
+CMD ["apachectl", "-D", "FOREGROUND"]
