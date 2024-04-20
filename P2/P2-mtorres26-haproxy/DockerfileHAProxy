@@ -1,0 +1,5 @@
+# Usa la imagen oficial de HAProxy como base
+FROM haproxy:latest
+
+# Copia el archivo de configuración personalizado al contenedor
+COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg

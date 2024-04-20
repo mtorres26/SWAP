@@ -1,0 +1,14 @@
+# Usa una imagen base de Debian con una versión ligera
+FROM debian:buster-slim
+
+# Actualiza el repositorio e instala Apache, PHP y herramientas de red
+RUN apt-get update && \
+    apt-get install -y apache2 php libapache2-mod-php net-tools iputils-ping && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Expone el puerto 80 para Apache
+EXPOSE 80
+
+# Inicia Apache en el inicio del contenedor
+CMD ["apachectl", "-D", "FOREGROUND"]
