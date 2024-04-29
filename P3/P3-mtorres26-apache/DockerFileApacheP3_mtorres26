@@ -10,14 +10,17 @@ RUN apt-get update && \
 RUN a2enmod ssl && a2ensite default-ssl && mkdir /etc/apache2/ssl
 
 # Copiar certificado y clave privada
-COPY certificados_mtorres26/certificado_mtorres26.crt /etc/apache2/ssl/certificado_mtorres26.crt
-COPY certificados_mtorres26/certificado_mtorres26.key /etc/apache2/ssl/certificado_mtorres26.key
+#COPY ../P3-mtorres26-certificados/certificado_mtorres26.crt /etc/apache2/ssl/certificado_mtorres26.crt
+#COPY ../P3-mtorres26-certificados/certificado_mtorres26.key /etc/apache2/ssl/certificado_mtorres26.key
 
 # Configurar los permisos adecuados
-RUN chmod 600 /etc/apache2/ssl/certificado_mtorres26.crt
+#RUN chmod 600 /etc/apache2/ssl/certificado_mtorres26.crt
 
 # Incluir la configuración SSL
 COPY mtorres26-apache-ssl.conf /etc/apache2/sites-available/mtorres26-apache-ssl.conf
+
+# Activamos nuestra configuracion
+RUN a2ensite mtorres26-apache-ssl
 
 # Exponer el puerto HTTPS y HTTP
 EXPOSE 443
