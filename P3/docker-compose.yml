@@ -9,6 +9,7 @@ services:
       - ./web_mtorres26:/var/www/html
       - ./P3-mtorres26-certificados:/etc/apache2/ssl
       - ./P3-mtorres26-apache/mtorres26-apache-ssl.conf:/etc/apache2/sites-available/mtorres26-apache-ssl.conf
+      #- ./P3-mtorres26-certificados/cadenaConf:/etc/apache2/ssl
     networks:
       red_web:
         ipv4_address: 192.168.10.2
@@ -22,6 +23,7 @@ services:
       - ./web_mtorres26:/var/www/html
       - ./P3-mtorres26-certificados:/etc/apache2/ssl
       - ./P3-mtorres26-apache/mtorres26-apache-ssl.conf:/etc/apache2/sites-available/mtorres26-apache-ssl.conf
+      #- ./P3-mtorres26-certificados/cadenaConf:/etc/apache2/ssl
     networks:
       red_web:
         ipv4_address: 192.168.10.3
@@ -35,6 +37,7 @@ services:
       - ./web_mtorres26:/var/www/html
       - ./P3-mtorres26-certificados:/etc/apache2/ssl
       - ./P3-mtorres26-apache/mtorres26-apache-ssl.conf:/etc/apache2/sites-available/mtorres26-apache-ssl.conf
+      #- ./P3-mtorres26-certificados/cadenaConf:/etc/apache2/ssl
     networks:
       red_web:
         ipv4_address: 192.168.10.4
@@ -48,6 +51,7 @@ services:
       - ./web_mtorres26:/var/www/html
       - ./P3-mtorres26-certificados:/etc/apache2/ssl
       - ./P3-mtorres26-apache/mtorres26-apache-ssl.conf:/etc/apache2/sites-available/mtorres26-apache-ssl.conf
+      #- ./P3-mtorres26-certificados/cadenaConf:/etc/apache2/ssl
     networks:
       red_web:
         ipv4_address: 192.168.10.5
@@ -61,6 +65,7 @@ services:
       - ./web_mtorres26:/var/www/html
       - ./P3-mtorres26-certificados:/etc/apache2/ssl
       - ./P3-mtorres26-apache/mtorres26-apache-ssl.conf:/etc/apache2/sites-available/mtorres26-apache-ssl.conf
+      #- ./P3-mtorres26-certificados/cadenaConf:/etc/apache2/ssl
     networks:
       red_web:
         ipv4_address: 192.168.10.6
@@ -74,6 +79,7 @@ services:
       - ./web_mtorres26:/var/www/html
       - ./P3-mtorres26-certificados:/etc/apache2/ssl
       - ./P3-mtorres26-apache/mtorres26-apache-ssl.conf:/etc/apache2/sites-available/mtorres26-apache-ssl.conf
+      #- ./P3-mtorres26-certificados/cadenaConf:/etc/apache2/ssl
     networks:
       red_web:
         ipv4_address: 192.168.10.7
@@ -87,6 +93,7 @@ services:
       - ./web_mtorres26:/var/www/html
       - ./P3-mtorres26-certificados:/etc/apache2/ssl
       - ./P3-mtorres26-apache/mtorres26-apache-ssl.conf:/etc/apache2/sites-available/mtorres26-apache-ssl.conf
+      #- ./P3-mtorres26-certificados/cadenaConf:/etc/apache2/ssl
     networks:
       red_web:
         ipv4_address: 192.168.10.8
@@ -100,6 +107,7 @@ services:
       - ./web_mtorres26:/var/www/html
       - ./P3-mtorres26-certificados:/etc/apache2/ssl
       - ./P3-mtorres26-apache/mtorres26-apache-ssl.conf:/etc/apache2/sites-available/mtorres26-apache-ssl.conf
+      #- ./P3-mtorres26-certificados/cadenaConf:/etc/apache2/ssl
     networks:
       red_web:
         ipv4_address: 192.168.10.9
@@ -115,6 +123,7 @@ services:
     volumes:
       - ./P3-mtorres26-nginx/mtorres26-nginx-ssl.conf:/etc/nginx/nginx.conf
       - ./P3-mtorres26-certificados:/etc/nginx/ssl
+      #- ./P3-mtorres26-certificados/cadenaConf:/etc/nginx/ssl
     networks:
       red_web:
         ipv4_address: 192.168.10.50
