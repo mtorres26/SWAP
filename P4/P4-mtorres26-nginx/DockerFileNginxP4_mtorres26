@@ -4,10 +4,6 @@ FROM nginx:latest
 # Crea un directorio 'ssl' en la carpeta de nginx
 RUN mkdir /etc/nginx/ssl
 
-# Copia el certificado y la clave privada al directorio 'ssl'
-#COPY ../P3-mtorres26-certificados/certificado_mtorres26.crt /etc/nginx/ssl/certificado_mtorres26.crt
-#COPY ../P3-mtorres26-certificados/certificado_mtorres26.key /etc/nginx/ssl/certificado_mtorres26.key
-
 # Copia el archivo de configuración
 COPY mtorres26-nginx-ssl.conf /etc/nginx/nginx.conf
 
