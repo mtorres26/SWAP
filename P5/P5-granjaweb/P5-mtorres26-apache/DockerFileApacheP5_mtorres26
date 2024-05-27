@@ -1,0 +1,30 @@
+#Utilizar una imagen base de debian ligera como en la P1 
+FROM debian:buster-slim
+
+# Instalar Apache, PHP, herramientas de red e iptables
+RUN apt-get update && \
+    apt-get install -y apache2 php libapache2-mod-php iptables net-tools iputils-ping && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* 
+
+#Instalar módulo y habilitar sitio SSL por defecto y crear directorio para certificados
+RUN a2enmod ssl && a2ensite default-ssl && mkdir /etc/apache2/ssl
+
+# Copiar script de entrada entrypoint.sh y script de reglas iptables
+COPY ./P5-mtorres26-iptables-web/entrypoint.sh /entrypoint.sh
+COPY ./P5-mtorres26-iptables-web/mtorres26-iptables-web.sh /mtorres26-iptables-web.sh
+
+# Configurar los permisos adecuados
+RUN chmod +x /entrypoint.sh /mtorres26-iptables-web.sh
+
+# Incluir la configuración SSL
+COPY mtorres26-apache-ssl.conf /etc/apache2/sites-available/mtorres26-apache-ssl.conf
+
+# Activamos nuestra configuracion
+RUN a2ensite mtorres26-apache-ssl
+
+# Exponer el puerto HTTPS y HTTP
+EXPOSE 443
+EXPOSE 80
+
+# Configurar el script de entrada
+ENTRYPOINT ["/entrypoint.sh", "apachectl", "-D", "FOREGROUND"]
